@@ -7,6 +7,60 @@
 </head>
 <body>
     <h1>ALUNOS - TEMAS</h1>
+    
+    <button id="btnSorteioTemas">SORTEIO TEMAS</button>
+
+    <div>
+        <ol id="resultadoSorteio">
+            
+        </ol>
+    </div>
+    <script>
+        var btnSorteio = document.getElementById("btnSorteioTemas");
+        
+        var tabelaResultado = document.getElementById('resultadoSorteio');
+
+        btnSorteio.addEventListener("click", sorteio_temas);
+
+        function sorteio_temas(){
+            var alunos = [
+                'ALUNO 1',
+                'ALUNO 2',
+                'ALUNO 3',
+                'ALUNO 4',
+                'ALUNO 5',
+                'ALUNO 6',
+            ];
+
+            var temas = [
+                'TEMA 1',
+                'TEMA 2',
+                'TEMA 3',
+                'TEMA 4',
+                'TEMA 5',
+                'TEMA 6',
+                'TEMA 7',
+                'TEMA 8',
+                'TEMA 9',
+                'TEMA 10',
+            ];
+
+            // Limpar Resultado
+            tabelaResultado.innerHTML = '';
+
+            // Sortear Temas
+            for (p = temas.length; p;) {
+                n = Math.random() * p-- | 0;
+                tmp = temas[n];
+                temas[n] = temas[p];
+                temas[p] = tmp;
+            }
+
+            // Imprimir Resultados
+            for (i = 0; i < alunos.length; i++)
+                tabelaResultado.innerHTML += '<p>' + alunos[i] +' - <b>'+ temas[i] + '</b></p>';
+        }      
+    </script>
 
 </body>
 </html>
